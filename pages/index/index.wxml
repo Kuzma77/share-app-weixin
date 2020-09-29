@@ -1,0 +1,56 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+
+<!-- tab -->
+<view class="tab">
+<view class="tab-item {{tab==0? 'active':''}}" data-tab="0" bindtap="changeTab">发现</view>
+<view class="tab-item {{tab==1? 'active':''}}" data-tab="1" bindtap="changeTab">使用说明</view>
+</view>
+
+<!-- tab1 -->
+<view class="share-list" wx:if="{{tab==0}}">
+<view wx:for="{{shareList}}" wx:for-item="share" class="share-item">
+<view wx:if="{{share.isOriginal==0}}" class="origin-label {{share.isOriginal==0? 'one':'two'}}">原创</view>
+<view wx:else class="origin-label {{share.isOriginal==0? 'one':'two'}}">转载</view>
+<image src="{{share.cover}}"></image>
+<view class="item-main" data-item="{{share}}" bindtap="goDetail">
+<text class="item-title">{{share.title}}</text>
+<text class="item-summary">{{share.title}}</text>
+</view>
+<view class="item-duihuan">
+<text>{{share.price}}积分</text>
+<text data-item="{{share}}" bindtap="duihuan">兑换</text>
+</view>
+</view>
+</view>
+
+<!-- tab2 -->
+<view wx:else class="dicription">
+<text>资源均为免费,段焕后即可查看下载地址：点击我的->我的兑换，即可查看，下载兑换过的资源。</text>
+
+<view>
+<text class="dicription-title">获得积分的方式</text>
+<view>> 每日签到</view>
+<view>> 投稿</view>
+<view>> 转发</view>
+<view>> 提建议、意见</view>
+</view>
+
+<view>
+<text class="dicription-title">深入交流</text>
+<view>> 技术交流QQ群：731548893</view>
+<view>> 技术交流微信群：叫我微信，注明加微信群</view>
+<view>> 私人微信：jumping_me</view>
+</view>
+
+<view>
+<text class="dicription-title">公众号（技术干活分享</text>
+<view>> 技术交流QQ群：731548893</view>
+<view>> 技术交流微信群：叫我微信，注明加微信群</view>
+<view>> 私人微信：jumping_me</view>
+</view>
+
+
+</view>
+
+</view>

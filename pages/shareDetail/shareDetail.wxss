@@ -1,0 +1,44 @@
+/* pages/duihuanSuccess/duihuanSuccess.wxss */
+.container{
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: 30rpx;
+}
+
+.title{
+  font-size: 35rpx;
+}
+
+.summary{
+  border-top: 30rpx solid rgba(128, 128, 128,0.2);
+  padding: 10rpx;
+}
+
+.duihuan{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+}
+
+.price{
+  color: #FF4444;
+  margin-right: 50rpx;
+}
+
+.btn{
+  color: #fff;
+  width: 250rpx;
+  height: 100rpx;
+  justify-content: center;
+  display: flex;
+  line-height: 100rpx;
+  background-color: #FF4444;
+}

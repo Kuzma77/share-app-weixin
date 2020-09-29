@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/tougao/tougao",
+    "pages/personal/personal",
+    "pages/shareDetail/shareDetail",
+    "pages/duihuanSuccess/duihuanSuccess"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#FF4444",
+    "navigationBarTitleText": "知识分享",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#FF4444",
+    "backgroundColor": "#fffff",
+    "list": [
+    {
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "image/icon_shouye.png",
+      "selectedIconPath": "image/icon_shouye_active.png"
+    },
+    {
+      "pagePath": "pages/tougao/tougao",
+      "text": "投稿",
+      "iconPath": "image/icon_tougao.png",
+      "selectedIconPath": "image/icon_tougao_active.png"
+    },
+    {
+      "pagePath": "pages/personal/personal",
+      "text": "我的",
+      "iconPath": "image/icon_wode.png",
+      "selectedIconPath": "image/icon_wode_active.png"
+    }
+  ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

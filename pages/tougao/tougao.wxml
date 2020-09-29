@@ -1,0 +1,48 @@
+<!--pages/tougao/tougao.wxml-->
+<view class="container">
+
+<text class="description">说明：投稿审核通过会有积分奖励：资源被下载会有积分奖励；提交的资源不得包含广告、侵权信息，百度盘地址建议有密码。</text>
+<view class="label-list">
+
+<radio-group bindchange="radioChange">
+<view class="is-original-item">
+<text>原创</text>
+<view>
+<radio value="0" checked="{{isOriginal==0}}" color="rgb(112, 138, 242)"/>
+</view>
+</view>
+<view class="is-original-item">
+<text>转载</text>
+<view>
+<radio value="1" checked="{{isOriginal==1}}" color="rgb(112, 138, 242)"/>
+</view>
+</view>
+
+</radio-group>
+
+<view class="label">
+<text>标题</text>
+<input placeholder="请输入标题"></input>
+</view>
+<view class="label">
+<text>作者</text>
+<input placeholder="请输入作者"></input>
+</view>
+<view class="label">
+<text>价格</text>
+<input placeholder="请输入价格"></input>
+</view>
+<view class="label">
+<text>简介</text>
+<input placeholder="介绍一下技术干货吧"></input>
+</view>
+<view class="label">
+<text>下载地址</text>
+<input placeholder="请输入下载地址"></input>
+</view>
+
+</view>
+
+<button class="btn">提交</button>
+
+</view>

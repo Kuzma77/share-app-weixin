@@ -1,0 +1,16 @@
+<!--pages/duihuanSuccess/duihuanSuccess.wxml-->
+<view class="container">
+<text class="title">{{share.title}}</text>
+<text>作者：{{share.author}}</text>
+
+<view class="summary">
+<text selectable>{{share.summary}}</text>
+</view>
+
+<view class="duihuan">
+<text>积分：</text>
+<text class="price">$ {{share.price}}</text>
+<text class="btn" data-item="{{share}}" bindtap="duihuan">兑换</text>
+</view>
+
+</view>

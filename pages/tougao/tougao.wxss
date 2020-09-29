@@ -1,0 +1,48 @@
+/* pages/tougao/tougao.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20rpx;
+}
+
+.description{
+  font-size: 30rpx;
+  font-weight: 550;
+}
+
+.label-list{
+  display: flex;
+  flex-direction: column;
+  margin: 5rpx;
+  margin-top: 20rpx;
+  width: 100%;
+  font-size: 35rpx;
+}
+
+.label{
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+
+
+.label input{
+  width: 70%;
+}
+
+.btn{
+  background-color: #FF4444;
+  color: #fff;
+  margin-top: 20rpx;
+}
+
+.is-original-item{
+  display: flex;
+  justify-content: space-between;
+  font-size: 32rpx;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+}

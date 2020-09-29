@@ -1,0 +1,13 @@
+/* pages/shareDetail/shareDetail.wxss */
+.container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 10rpx;
+}
+
+.btn{
+  color: white;
+  background-color: rgb(69, 211, 69);
+}
