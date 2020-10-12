@@ -11,8 +11,8 @@
 <!-- 已登录 -->
 <view class="my-info" wx:else>
 <view class="user">
-<image src="{{userInfo.cover}}"></image>
-<text>{{userInfo.name}}</text>
+<image src="{{userInfo.avatarUrl}}"></image>
+<text>{{userInfo.wxNickName}}</text>
 <text>积分:{{userInfo.bonus}}</text>
 <view class="qiandao">签到</view>
 </view>

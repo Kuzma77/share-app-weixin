@@ -15,11 +15,11 @@ Page({
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: 'http://localhost:8081/share/all',
+      url: 'http://localhost:8081/share/query',
       success:function(res){
         // console.log(res)
         that.setData({
-          shareList: res.data
+          shareList: res.data.data
         })
         console.log(that.data.shareList)
       }

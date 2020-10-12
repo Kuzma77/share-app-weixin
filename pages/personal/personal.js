@@ -1,6 +1,7 @@
 // pages/personal/personal.js
 
 const app = getApp();
+const API = require('../../utils/request.js')
 
 Page({
 
@@ -71,9 +72,17 @@ Page({
    * 登录，目前只是走个形式
    */
   weixinLogin(){
-    app.globalData.userInfo = app.globalData.user
-    this.setData({
-      userInfo:app.globalData.userInfo
+    API.login({
+      wxId: app.globalData.wxId,
+      wxNickName: app.globalData.userInfo.nickName,
+      avatar: app.globalData.userInfo.avatarUrl
+    }).then( res =>{
+      const request = JSON.parse(res)
+      console.log(request)
+      app.globalData.user = request.user
+      this.setData({
+        userInfo:app.globalData.user
+      })
     })
   }
 })
