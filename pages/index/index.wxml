@@ -7,8 +7,18 @@
 <view class="tab-item {{tab==1? 'active':''}}" data-tab="1" bindtap="changeTab">使用说明</view>
 </view>
 
+
+
 <!-- tab1 -->
 <view class="share-list" wx:if="{{tab==0}}">
+<view class="nocice">
+<text>{{notice.content}}</text>
+</view>
+
+
+<view class="search">
+<input placeholder="请输入搜索内容" class="search-input" placeholder-class="placeholder-class"></input>
+</view>
 <view wx:for="{{shareList}}" wx:for-item="share" class="share-item">
 <view wx:if="{{share.isOriginal==0}}" class="origin-label {{share.isOriginal==0? 'one':'two'}}">原创</view>
 <view wx:else class="origin-label {{share.isOriginal==0? 'one':'two'}}">转载</view>
@@ -19,7 +29,7 @@
 </view>
 <view class="item-duihuan">
 <text>{{share.price}}积分</text>
-<text data-item="{{share}}" bindtap="duihuan">兑换</text>
+<text data-item="{{share}}" bindtap="duihuan">{{share.isOriginal==0? '下载':'兑换'}}</text>
 </view>
 </view>
 </view>

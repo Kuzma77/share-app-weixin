@@ -2,21 +2,23 @@
 const API_BASE_URL = 'http://localhost:8040';
 const app = getApp()
 
-const get = (url, data) => { 
+const get = (url,data) => { 
   let _url = API_BASE_URL  + url;
   return new Promise((resolve, reject) => {
     wx.showLoading({
       title: "正在加载中...",
     })
+    console.log(_url)
     wx.request({
       url: _url,
-      method: "get",
+      method: 'GET',
       data: data,
       header: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Token': app.globalData.token
+        'X-Token': app.globalData.token
       },
       success(request) {
+        console.log(request)
         wx.hideLoading();
         resolve(request.data)
       },
@@ -86,5 +88,13 @@ module.exports ={
   login:(data) =>{
     console.log("登录")
     return post('/user/login',data,'json') //微信登录
+  },
+  getShares:(data) =>{
+    console.log('获取分享列表')
+    return get('/share/query',data)//获取分享列表
+  },
+  getNotic:() =>{
+    console.log('获取最新公告')
+    return get('/notice/one') //获取最新公告
   }
 }

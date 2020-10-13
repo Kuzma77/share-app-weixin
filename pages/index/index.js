@@ -1,4 +1,7 @@
 // pages/index/index.js
+const API = require('../../utils/request.js')
+const app = getApp()
+
 Page({
 
   /**
@@ -6,7 +9,9 @@ Page({
    */
   data: {
     tab: 0,
-    shareList:null
+    shareList:null,
+    user:null,
+    notice:null
   },
 
   /**
@@ -14,15 +19,18 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    wx.request({
-      url: 'http://localhost:8081/share/query',
-      success:function(res){
-        // console.log(res)
-        that.setData({
-          shareList: res.data.data
-        })
-        console.log(that.data.shareList)
-      }
+    // API.getShares().then(res =>{
+    //   that.setData({
+    //     shareList: res.data
+    //   })
+    // })
+    API.getNotic().then(res =>{
+      that.setData({
+        notice: res.data
+      })
+    })
+    that.setData({
+      user: app.globalData.user
     })
 
   },
@@ -38,7 +46,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    if(app.globalData.shareList==null){
+    API.getShares().then(res =>{
+      that.setData({
+        shareList: res.data
+      })
+      app.globalData.shareList = res.data
+    })
+    that.setData({
+      user: app.globalData.user,
+    })
+  }
   },
 
   /**

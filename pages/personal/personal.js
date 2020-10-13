@@ -9,7 +9,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:null
+    userInfo:null,
+    linkList:[
+      {
+        id:1,
+        text:'我的兑换',
+        url:'/pages/wodeduihuan/wodeduihuan'
+      },
+      {
+        id:2,
+        text:'积分明细',
+        url:'/pages/jifenmingxi/jifenmingxi'
+      },
+      {
+        id:3,
+        text:'我的投稿',
+        url:'/pages/wodetougao/wodetougao'
+      }
+    ]
   },
 
   /**
@@ -73,16 +90,18 @@ Page({
    */
   weixinLogin(){
     API.login({
-      wxId: app.globalData.wxId,
+      openId: app.globalData.openId,
       wxNickName: app.globalData.userInfo.nickName,
-      avatar: app.globalData.userInfo.avatarUrl
+      avatarUrl: app.globalData.userInfo.avatarUrl
     }).then( res =>{
       const request = JSON.parse(res)
       console.log(request)
       app.globalData.user = request.user
+      app.globalData.token = request.token.token
       this.setData({
         userInfo:app.globalData.user
       })
+      //wx.setStorageSync('user', user)
     })
   }
 })

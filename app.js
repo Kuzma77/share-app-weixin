@@ -19,8 +19,8 @@ App({
             grant_type: 'authorization_code'
           },
           success: res =>{
-            // console.log(res)
-            this.globalData.wxId = res.data.openid
+            console.log(res)
+            this.globalData.openId = res.data.openid
           }
         })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -34,7 +34,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              //console.log(res)
+              console.log(res)
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               //console.log(this.globalData.userInfo)
@@ -52,6 +52,8 @@ App({
   globalData: {
     userInfo: null,
     user: null,
-    wxId: '',
+    token:null,
+    shareList:null,
+    openId: ''
   }
 })

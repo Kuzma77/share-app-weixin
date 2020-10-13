@@ -102,3 +102,37 @@
 .dicription-title{
   font-weight: 600;
 }
+
+.nocice{
+  padding: 10rpx;
+  font-size: 35rpx;
+  color: red;
+  font-weight: 500;
+}
+
+.search{
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+}
+
+.placeholder-class{
+  align-items: center;
+  font-size: 36rpx;
+}
+
+.search-input{
+  background-color: rgba(237, 221, 221,0.5);
+  border: 1rpx solid rgb(191, 175, 175);
+  border-radius: 5%;
+  width: 80%;
+}
+
+.share-list{
+  display: flex;
+  padding: 5rpx;
+  width: 100%;
+  flex-direction: column;
+}
+

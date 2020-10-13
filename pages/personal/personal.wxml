@@ -16,10 +16,10 @@
 <text>积分:{{userInfo.bonus}}</text>
 <view class="qiandao">签到</view>
 </view>
-<view class="my-manage">
-<view class="manage-item">我的兑换</view>
-<view class="manage-item">积分明细</view>
-<view class="manage-item">我的投稿</view>
+<view class="my-manage" wx:for="{{linkList}}">
+<navigator url="{{item.url}}">
+<view class="manage-item">{{item.text}}</view>
+</navigator>
 </view>
 </view>
 
