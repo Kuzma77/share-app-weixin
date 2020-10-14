@@ -15,7 +15,7 @@ const get = (url,data) => {
       data: data,
       header: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'X-Token': app.globalData.token
+        'X-Token': app.globalData.token==null? 'no-token':app.globalData.token
       },
       success(request) {
         console.log(request)
@@ -96,5 +96,9 @@ module.exports ={
   getNotic:() =>{
     console.log('获取最新公告')
     return get('/notice/one') //获取最新公告
+  },
+  getMyShares:(data) =>{
+    console.log("获取我的投稿")
+    return get('/share/query/myContribution',data) //获取我的投稿
   }
 }

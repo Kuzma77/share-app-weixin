@@ -1,5 +1,6 @@
 // pages/index/index.js
 const API = require('../../utils/request.js')
+const ifHasdownloadUrl = require('../../utils/IfHasdownloadUrl.js')
 const app = getApp()
 
 Page({
@@ -11,7 +12,9 @@ Page({
     tab: 0,
     shareList:null,
     user:null,
-    notice:null
+    notice:null,
+    pageNo:1,
+    pageSize: 5
   },
 
   /**
@@ -47,24 +50,35 @@ Page({
    */
   onShow: function () {
     var that = this
-    if(app.globalData.shareList==null){
-    API.getShares().then(res =>{
+    API.getShares({
+      pageNo:that.data.pageNo,
+      pageSize:that.data.pageSize
+    }).then(res =>{
+      const shares = res.data
+      //添加ifHasdownloadUrl属性
+      if(shares!==null){ 
+      shares.forEach(element => {
+        element['ifHasdownloadUrl'] = ifHasdownloadUrl.ifHasdownLoadUrl(element)
+      });
+      console.log(shares)
+    }
       that.setData({
-        shareList: res.data
+        shareList: shares
       })
-      app.globalData.shareList = res.data
+      app.globalData.shareList = shares
     })
     that.setData({
       user: app.globalData.user,
     })
-  }
-  },
+    },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.setData({
+      pageNo:1
+    })
   },
 
   /**
@@ -83,9 +97,30 @@ Page({
 
   /**
    * 页面上拉触底事件的处理函数
+   * 下一页
    */
   onReachBottom: function () {
-
+    var that = this
+    that.setData({
+      pageNo:that.data.pageNo+1
+    })
+    API.getShares({
+      pageNo:that.data.pageNo,
+      pageSize:that.data.pageSize
+    }).then(res =>{
+      const shares = res.data
+      //添加ifHasdownloadUrl属性
+      if(shares!==null){ 
+      shares.forEach(element => {
+        element['ifHasdownloadUrl'] = ifHasdownloadUrl.ifHasdownLoadUrl(element)
+      }); 
+      console.log(shares)
+    }
+    that.setData({
+      shareList:that.data.shareList.concat(shares)
+    })
+      app.globalData.shareList = shares
+    })
   },
 
   /**
@@ -123,8 +158,12 @@ Page({
     //取出绑定对象
     console.log(e)
     var share = e.currentTarget.dataset.item
+    const url = share.ifHasdownloadUrl? '../duihuanSuccess/duihuanSuccess?share='+JSON.stringify(share):'../shareDetail/shareDetail?share='+JSON.stringify(share)
     wx.navigateTo({
-      url: '../shareDetail/shareDetail?share='+JSON.stringify(share),
+      url: url
     })
   }
+
+
+ 
 })

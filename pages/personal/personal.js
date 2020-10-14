@@ -89,19 +89,54 @@ Page({
    * 登录，目前只是走个形式
    */
   weixinLogin(){
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              console.log(res)
+              // 可以将 res 发送给后台解码出 unionId
+              app.globalData.userInfo = res.userInfo
+              this.login()
+              //console.log(this.globalData.userInfo)
+              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 所以此处加入 callback 以防止这种情况
+              if (this.userInfoReadyCallback) {
+                this.userInfoReadyCallback(res)
+              }
+            }
+          })
+        }
+      }
+    })
+  },
+  login(){
     API.login({
       openId: app.globalData.openId,
       wxNickName: app.globalData.userInfo.nickName,
       avatarUrl: app.globalData.userInfo.avatarUrl
     }).then( res =>{
+      wx.showToast({
+        title: '登录成功',
+      })
       const request = JSON.parse(res)
       console.log(request)
       app.globalData.user = request.user
       app.globalData.token = request.token.token
+      // wx.setStorageSync('user', request.user)
+      // wx.setStorageSync('token', request.token)
       this.setData({
         userInfo:app.globalData.user
       })
-      //wx.setStorageSync('user', user)
+    })
+  },
+  exit(){
+    app.globalData.user = null
+    app.globalData.token = null
+    this.setData({
+      userInfo:null
     })
   }
 })

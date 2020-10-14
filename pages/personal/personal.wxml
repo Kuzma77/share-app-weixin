@@ -5,7 +5,7 @@
 <view class="no-user" wx:if="{{userInfo === null}}">
 <image src="../../image/yonghu.png"></image>
 <view>登录,享受技术之旅吧!</view>
-<button class="btn" bindtap="weixinLogin">微信登录</button>
+<button class="btn" bindgetuserinfo="weixinLogin" open-type="getUserInfo">微信登录</button>
 </view>
 
 <!-- 已登录 -->
@@ -15,6 +15,7 @@
 <text>{{userInfo.wxNickName}}</text>
 <text>积分:{{userInfo.bonus}}</text>
 <view class="qiandao">签到</view>
+<button size="small" bindtap="exit">退出登录</button>
 </view>
 <view class="my-manage" wx:for="{{linkList}}">
 <navigator url="{{item.url}}">
