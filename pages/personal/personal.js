@@ -47,7 +47,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      userInfo:app.globalData.user
+    })
   },
 
   /**
@@ -120,11 +122,13 @@ Page({
     }).then( res =>{
       wx.showToast({
         title: '登录成功',
+        icon: 'success',
+        duration: 2000
       })
       const request = JSON.parse(res)
       console.log(request)
-      app.globalData.user = request.user
-      app.globalData.token = request.token.token
+      app.globalData.user = request.data.user
+      app.globalData.token = request.data.token.token
       // wx.setStorageSync('user', request.user)
       // wx.setStorageSync('token', request.token)
       this.setData({

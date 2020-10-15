@@ -1,4 +1,6 @@
 // pages/duihuanSuccess/duihuanSuccess.js
+const app = getApp()
+const API = require("../../utils/request.js")
 Page({
 
   /**
@@ -69,12 +71,47 @@ Page({
    /**
    * 兑换
    */
-  duihuan(e){
+  exchange(e){
     //取出绑定对象
     console.log(e)
     var share = e.currentTarget.dataset.item
-    wx.navigateTo({
-      url: '../duihuanSuccess/duihuanSuccess?share='+JSON.stringify(share),
+    if(app.globalData.user!=null){
+    API.exchange({
+      userId: app.globalData.user.id,
+      shareId: share.id
+    }).then(res =>{
+      console.log(res)
+      const request = JSON.parse(res)
+      if(request.succ){
+        API.update({
+          id:app.globalData.user.id
+        }).then(res =>{
+          console.log(res)
+          if(res.succ){
+            app.globalData.user = res.data
+            console.log(app.globalData.user)
+          }
+        })
+        wx.showToast({
+          title: '兑换成功',
+          icon: 'success',
+          duration: 2000,
+          success:function(res){
+            wx.redirectTo({
+              url: '../duihuanSuccess/duihuanSuccess?share='+JSON.stringify(share),
+            })
+          }
+        })
+      }
+      
     })
+  }
+  else{
+    wx.showToast({
+      title: '请先去登录',
+      icon: 'none',
+      duration: 1500
+    })
+  }
   },
 })

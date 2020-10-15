@@ -10,7 +10,7 @@
 <view class="duihuan">
 <text>积分：</text>
 <text class="price">$ {{share.price}}</text>
-<text class="btn" data-item="{{share}}" bindtap="duihuan">兑换</text>
+<text class="btn" data-item="{{share}}" bindtap="exchange">兑换</text>
 </view>
 
 </view>

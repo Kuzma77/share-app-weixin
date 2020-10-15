@@ -5,9 +5,9 @@ const app = getApp()
 const get = (url,data) => { 
   let _url = API_BASE_URL  + url;
   return new Promise((resolve, reject) => {
-    wx.showLoading({
-      title: "正在加载中...",
-    })
+    // wx.showLoading({
+    //   title: "正在加载中...",
+    // })
     console.log(_url)
     wx.request({
       url: _url,
@@ -19,7 +19,7 @@ const get = (url,data) => {
       },
       success(request) {
         console.log(request)
-        wx.hideLoading();
+        // wx.hideLoading();
         resolve(request.data)
       },
       fail(error) {
@@ -100,5 +100,13 @@ module.exports ={
   getMyShares:(data) =>{
     console.log("获取我的投稿")
     return get('/share/query/myContribution',data) //获取我的投稿
+  },
+  exchange:(data)=>{
+    console.log("兑换分享")
+    return post("/share/exchange",data) //兑换分享
+  },
+  update:(data)=>{
+    console.log("刷新用户信息")
+    return get("/user",data)//刷新用户信息
   }
 }

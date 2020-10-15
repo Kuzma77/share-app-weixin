@@ -50,6 +50,10 @@ Page({
    */
   onShow: function () {
     var that = this
+    // that.setData({
+    //   shareList: app.globalData.shareList
+    // })
+    // console.log(that.data.pageNo)
     API.getShares({
       pageNo:that.data.pageNo,
       pageSize:that.data.pageSize
@@ -61,14 +65,12 @@ Page({
         element['ifHasdownloadUrl'] = ifHasdownloadUrl.ifHasdownLoadUrl(element)
       });
       console.log(shares)
+      // app.globalData.shareList = shares
     }
-      that.setData({
-        shareList: shares
-      })
-      app.globalData.shareList = shares
-    })
     that.setData({
+      shareList: shares,
       user: app.globalData.user,
+    })
     })
     },
 
@@ -116,10 +118,12 @@ Page({
       }); 
       console.log(shares)
     }
-    that.setData({
-      shareList:that.data.shareList.concat(shares)
-    })
-      app.globalData.shareList = shares
+
+      // app.globalData.shareList = app.globalData.shareList.concat(shares)
+      that.setData({
+        shareList:that.data.shareList.concat(shares)
+      })
+    
     })
   },
 
