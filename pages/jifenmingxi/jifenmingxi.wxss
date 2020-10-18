@@ -1,1 +1,19 @@
 /* pages/jifenmingxi/jifenmingxi.wxss */
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 5rpx;
+}
+
+.log-item{
+  border-bottom: 1rpx solid rgb(235, 220, 220);
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15rpx;
+  font-size: 34rpx;
+  height: 80rpx;
+}

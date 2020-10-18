@@ -17,9 +17,9 @@
 
 
 <view class="search">
-<input placeholder="请输入搜索内容" confirm-type="search" class="search-input" placeholder-class="placeholder-class"></input>
+<input placeholder="请输入搜索内容" value="{{title}}" bindinput="bindTitle" confirm-type="search" class="search-input" placeholder-class="placeholder-class"></input>
 </view>
-<view wx:for="{{shareList}}" wx:for-item="share" class="share-item">
+<view wx:for="{{shareList}}" wx:for-item="share" class="share-item" wx:if="{{share.showFlag==1&&share.auditStatus=='PASSED'}}">
 <view wx:if="{{share.isOriginal==0}}" class="origin-label {{share.isOriginal==0? 'one':'two'}}">原创</view>
 <view wx:else class="origin-label {{share.isOriginal==0? 'one':'two'}}">转载</view>
 <image src="{{share.cover}}"></image>

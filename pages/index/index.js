@@ -14,28 +14,20 @@ Page({
     user:null,
     notice:null,
     pageNo:1,
-    pageSize: 5
+    pageSize: 5,
+    more:true,
+    title:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    // API.getShares().then(res =>{
-    //   that.setData({
-    //     shareList: res.data
-    //   })
-    // })
-    API.getNotic().then(res =>{
-      that.setData({
-        notice: res.data
-      })
-    })
-    that.setData({
+    this.getNotice()
+    this.getShares(true)
+    this.setData({
       user: app.globalData.user
     })
-
   },
 
   /**
@@ -49,38 +41,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this
-    // that.setData({
-    //   shareList: app.globalData.shareList
-    // })
-    // console.log(that.data.pageNo)
-    API.getShares({
-      pageNo:that.data.pageNo,
-      pageSize:that.data.pageSize
-    }).then(res =>{
-      const shares = res.data
-      //添加ifHasdownloadUrl属性
-      if(shares!==null){ 
-      shares.forEach(element => {
-        element['ifHasdownloadUrl'] = ifHasdownloadUrl.ifHasdownLoadUrl(element)
-      });
-      console.log(shares)
-      // app.globalData.shareList = shares
-    }
-    that.setData({
-      shareList: shares,
-      user: app.globalData.user,
-    })
-    })
+    this.getShares(true)
     },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    this.setData({
-      pageNo:1
-    })
   },
 
   /**
@@ -94,7 +61,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getShares(true)
   },
 
   /**
@@ -102,29 +69,17 @@ Page({
    * 下一页
    */
   onReachBottom: function () {
-    var that = this
-    that.setData({
-      pageNo:that.data.pageNo+1
-    })
-    API.getShares({
-      pageNo:that.data.pageNo,
-      pageSize:that.data.pageSize
-    }).then(res =>{
-      const shares = res.data
-      //添加ifHasdownloadUrl属性
-      if(shares!==null){ 
-      shares.forEach(element => {
-        element['ifHasdownloadUrl'] = ifHasdownloadUrl.ifHasdownLoadUrl(element)
-      }); 
-      console.log(shares)
-    }
-
-      // app.globalData.shareList = app.globalData.shareList.concat(shares)
-      that.setData({
-        shareList:that.data.shareList.concat(shares)
+    if(!this.data.more){
+      wx.showToast({
+        title: '已加载完毕',
+        duration: 1000
       })
-    
+      return false
+    }
+    this.setData({
+      pageNo:this.data.pageNo+1
     })
+    this.getShares()
   },
 
   /**
@@ -166,8 +121,69 @@ Page({
     wx.navigateTo({
       url: url
     })
-  }
+  },
 
+  /**
+   * 获取分享列表
+   * @param {boolean} init 
+   */
+  getShares(init){
+    var that = this
+    if(init){
+      that.setData({
+        pageNo:1,
+        more:true
+      })
+    }
+     API.getShares({
+      pageNo:that.data.pageNo,
+      pageSize:that.data.pageSize
+    }).then(res =>{
+      const shares = res.data
+      //添加ifHasdownloadUrl属性
+      if(shares!==null){ 
+      shares.forEach(element => {
+        element['ifHasdownloadUrl'] = ifHasdownloadUrl.ifHasdownLoadUrl(element)
+      }); 
+      console.log(shares)
+    }
+    if(init){
+      that.setData({
+        shareList:shares
+      })
+      wx.stopPullDownRefresh({
+        complete: (res) => {},
+      })
+    }else{
+      that.setData({
+        shareList:that.data.shareList.concat(res.data)
+      })
+    }
+    if(res.data.length < that.data.pageSize&&that.data.pageNo>0){
+      that.setData({
+        more:false
+      })
+    }
+    })
+  },
+
+  /**
+   * 获取最新公告
+   */
+  getNotice(){
+    var that = this
+    API.getNotic().then(res =>{
+      that.setData({
+        notice: res.data
+      })
+    })
+  },
+
+  bindTitle(e){
+    this.setData({
+      title: e.detail.value
+    })
+  }
 
  
 })

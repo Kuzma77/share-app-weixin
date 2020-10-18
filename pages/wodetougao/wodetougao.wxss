@@ -67,3 +67,23 @@
 .dicription-title{
   font-weight: 600;
 }
+
+.NOT_YET{
+  position: absolute;
+  right: -3%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 150rpx solid rgba(255, 0, 0,0.7);
+  border-left: 150rpx solid transparent;
+}
+.NOT_YET-text{
+  position: absolute;
+  right: 25rpx;
+  top: 25rpx;
+  transform: rotate(45deg);
+  z-index: 1000;
+  font-size: 25rpx;
+  color: #fff;
+}

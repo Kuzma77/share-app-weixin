@@ -1,2 +1,13 @@
 <!--pages/jifenmingxi/jifenmingxi.wxml-->
-<text>积分明细</text>
+<view class="container">
+<view wx:for="{{bonusLogList}}" wx:for-item="log" class="log-item">
+<view class="log-main" data-item="{{share}}" bindtap="goDetail">
+<text class="log-time">{{log.createTime}}</text>
+<text class="log-event">{{log.event}}</text>
+</view>
+<view class="log-value">
+<text>{{log.value}}</text>
+</view>
+</view>
+</view>
+

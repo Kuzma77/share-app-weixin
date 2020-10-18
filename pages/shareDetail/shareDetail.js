@@ -86,8 +86,7 @@ Page({
         API.update({
           id:app.globalData.user.id
         }).then(res =>{
-          console.log(res)
-          if(res.succ){
+          if(data.succ){
             app.globalData.user = res.data
             console.log(app.globalData.user)
           }
@@ -102,8 +101,13 @@ Page({
             })
           }
         })
+      }else{
+        wx.showToast({
+          title: '兑换异常',
+          icon: 'none',
+          duration: 1500
+        })
       }
-      
     })
   }
   else{

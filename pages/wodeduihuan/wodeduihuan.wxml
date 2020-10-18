@@ -1,2 +1,15 @@
 <!--pages/wodeduihuan/wodeduihuan.wxml-->
-<text>我的兑换</text>
+<view>
+<view wx:for="{{shareList}}" wx:for-item="share" class="share-item">
+<view wx:if="{{share.isOriginal==0}}" class="origin-label {{share.isOriginal==0? 'one':'two'}}">原创</view>
+<view wx:else class="origin-label {{share.isOriginal==0? 'one':'two'}}">转载</view>
+<image src="{{share.cover}}"></image>
+<view class="item-main" data-item="{{share}}" bindtap="goDetail">
+<text class="item-title">{{share.title}}</text>
+<text class="item-summary">{{share.title}}</text>
+</view>
+<view class="item-duihuan">
+<text data-item="{{share}}" bindtap="duihuan">下载</text>
+</view>
+</view>
+</view>

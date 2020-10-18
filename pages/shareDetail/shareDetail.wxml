@@ -7,6 +7,8 @@
 <text selectable>{{share.summary}}</text>
 </view>
 
+<image src="{{share.cover}}"></image>
+
 <view class="duihuan">
 <text>积分：</text>
 <text class="price">$ {{share.price}}</text>

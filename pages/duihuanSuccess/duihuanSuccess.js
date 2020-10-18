@@ -65,5 +65,28 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  /**
+   * 复制下载链接方法
+   */
+  copy(){
+    console.log('111')
+    console.log(this.validateGet(this.data.share.downloadUrl))
+    wx.setClipboardData({
+      data: this.validateGet(this.data.share.downloadUrl),
+      success:function(){
+        wx.showToast({
+          title: '下载链接已复制',
+        })
+      }
+    })
+  },
+  /**
+   * 正则提取
+   */
+  validateGet(string){
+    var urlReg = '^(f|ht){1}(tp|tps):\\/\\/([\\w-]+\\.)+[\\w-]+(\\/[\\w- ./?%&=]*)?'
+    return string.match(urlReg)[0]
   }
 })

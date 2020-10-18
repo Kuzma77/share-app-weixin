@@ -1,11 +1,14 @@
 // pages/jifenmingxi/jifenmingxi.js
+const app = getApp()
+const API  = require('../../utils/request.js')
+const TimeUtil = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    bonusLogList:null
   },
 
   /**
@@ -26,7 +29,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getBonusLogs()
   },
 
   /**
@@ -62,5 +65,23 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //获取积分明细
+  getBonusLogs(){
+    API.getMyBonusLog({
+      userId:app.globalData.user.id
+    }).then(res =>{
+      console.log(res)
+      const logs = res.data
+      if(logs!=null){
+        logs.forEach(element => {
+          const date = new Date(element.createTime)
+          element.createTime = TimeUtil.formatTime(date)
+        });
+      }
+      this.setData({
+        bonusLogList:logs
+      })
+    })
   }
 })

@@ -1,5 +1,7 @@
 <!--pages/shareDetail/shareDetail.wxml-->
 <view class="container">
-<text>{{share.title}}</text>
-<button class="btn">复制下载地址</button>
+<text class="title">{{share.title}}</text>
+<image src="{{share.cover}}"></image>
+<text class="download-description">下载链接：{{share.downloadUrl}}  复制这段内容后打开百度网盘手机App,操作更方便哦</text>
+<button class="btn" bindtap="copy">复制下载地址</button>
 </view>

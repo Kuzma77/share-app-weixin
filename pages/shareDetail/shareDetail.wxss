@@ -6,6 +6,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   font-size: 30rpx;
+  width: 100%;
 }
 
 .title{
@@ -41,4 +42,10 @@
   display: flex;
   line-height: 100rpx;
   background-color: #FF4444;
+}
+
+image{
+  width: 500rpx;
+  height: 500rpx;
+  margin-left: 100rpx;
 }
