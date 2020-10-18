@@ -17,7 +17,8 @@
 <view class="qiandao">签到</view>
 <button size="small" bindtap="exit">退出登录</button>
 </view>
-<view class="my-manage" wx:for="{{linkList}}">
+<wxs src="../../utils/auth.wxs" module="tools" />
+<view class="my-manage" wx:for="{{linkList}}" wx:if="{{tools.auth(item.roles,userInfo.roles)}}">
 <navigator url="{{item.url}}">
 <view class="manage-item">{{item.text}}</view>
 </navigator>

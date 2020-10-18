@@ -1,0 +1,11 @@
+var auth = function(arr,role){
+  for (var index = 0; index < arr.length; index++) {
+    var element = arr[index];
+    if(element==role){
+      return true
+    }
+  }
+  return false
+}
+
+module.exports.auth = auth;

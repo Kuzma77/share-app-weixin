@@ -1,0 +1,70 @@
+/* pages/shenhetougao/shenhetougao.wxss */
+/* pages/wodeduihuan/wodeduihuan.wxss */
+.share-item{
+  display: flex;
+  width: 100%;
+  height: 200rpx;
+  padding: 10rpx;
+  align-items: center;
+  position: relative;
+  border-bottom: 1rpx  dashed gray;
+}
+
+.share-item image{
+  flex: 0 0 18%;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}
+
+
+.origin-label{
+  position: absolute;
+  top: 10%;
+  display: flex;
+  color: #fff;
+  flex-wrap: nowrap;
+  font-size: 30rpx;
+  padding: 5rpx;
+}
+
+.origin-label.one{
+  background-color: #FF4444;
+}
+
+.origin-label.two{
+  background-color: rgb(132, 189, 0);
+}
+
+.item-main{
+  flex: 0 0 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+}
+
+.item-title{
+  font-weight: 650;
+  font-size: 30rpx;
+}
+
+.item-summary{
+  font-weight: 500;
+  font-size: 30rpx;
+}
+
+.item-duihuan{
+  /* flex: 0 0 10%; */
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+}
+
+.dicription{
+  font-size: 32rpx;
+  padding: 20rpx;
+}
+
+.dicription-title{
+  font-weight: 600;
+}

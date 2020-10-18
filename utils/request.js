@@ -97,5 +97,14 @@ module.exports ={
   updateContribution:(data) =>{
     console.log("编辑投稿")
     return post("/share/update/contribute",data) //编辑投稿
+  },
+  getNotYetShares:() =>{
+    console.log("获取未通过审核分享")
+    return get("/share/query/notYet")//获取未通过审核分享
+  },
+  
+  updateAuditStatus:(data) =>{
+    console.log('通过审核')
+    return post('/admin/shares/audit',data)//通过审核
   }
 }

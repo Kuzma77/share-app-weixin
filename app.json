@@ -7,7 +7,8 @@
     "pages/duihuanSuccess/duihuanSuccess",
     "pages/wodeduihuan/wodeduihuan",
     "pages/jifenmingxi/jifenmingxi",
-    "pages/wodetougao/wodetougao"
+    "pages/wodetougao/wodetougao",
+    "pages/shenhetougao/shenhetougao"
   ],
   "window":{
     "backgroundTextStyle":"light",

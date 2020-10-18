@@ -1,0 +1,16 @@
+<!--pages/shenhetougao/shenhetougao.wxml-->
+<view>
+<view wx:for="{{shareList}}" wx:for-item="share" class="share-item">
+<view wx:if="{{share.isOriginal==0}}" class="origin-label {{share.isOriginal==0? 'one':'two'}}">原创</view>
+<view wx:else class="origin-label {{share.isOriginal==0? 'one':'two'}}">转载</view>
+<image src="{{share.cover}}"></image>
+<view class="item-main" data-item="{{share}}" bindtap="goDetail">
+<text class="item-title">{{share.title}}</text>
+<wxs src="../../utils/sub.wxs" module="tools" />
+<text class="item-summary">{{tools.sub(share.summary)}}</text>
+</view>
+<view class="item-duihuan">
+<text data-id="{{share.id}}" bindtap="pass">通过审核</text>
+</view>
+</view>
+</view>

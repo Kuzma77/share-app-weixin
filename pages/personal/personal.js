@@ -14,17 +14,26 @@ Page({
       {
         id:1,
         text:'我的兑换',
-        url:'/pages/wodeduihuan/wodeduihuan'
+        url:'/pages/wodeduihuan/wodeduihuan',
+        roles:['user','admin']
       },
       {
         id:2,
         text:'积分明细',
-        url:'/pages/jifenmingxi/jifenmingxi'
+        url:'/pages/jifenmingxi/jifenmingxi',
+        roles:['user','admin']
       },
       {
         id:3,
         text:'我的投稿',
-        url:'/pages/wodetougao/wodetougao'
+        url:'/pages/wodetougao/wodetougao',
+        roles:['user','admin']
+      },
+      {
+        id:4,
+        text:'审核投稿',
+        url:'/pages/shenhetougao/shenhetougao',
+        roles:['admin']
       }
     ]
   },
@@ -126,6 +135,7 @@ Page({
       const request = JSON.parse(res)
       console.log(request)
       app.globalData.user = request.data.user
+      this.updateUserInfo()
       app.globalData.token = request.data.token.token
       // wx.setStorageSync('user', request.user)
       // wx.setStorageSync('token', request.token)
