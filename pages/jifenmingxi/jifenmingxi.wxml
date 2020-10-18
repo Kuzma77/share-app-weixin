@@ -1,8 +1,9 @@
 <!--pages/jifenmingxi/jifenmingxi.wxml-->
 <view class="container">
 <view wx:for="{{bonusLogList}}" wx:for-item="log" class="log-item">
-<view class="log-main" data-item="{{share}}" bindtap="goDetail">
-<text class="log-time">{{log.createTime}}</text>
+<view class="log-main" data-item="{{share}}">
+<image src="../../image/日历.png"></image>
+<text class="log-time">{{log.createTime}}-</text>
 <text class="log-event">{{log.event}}</text>
 </view>
 <view class="log-value">

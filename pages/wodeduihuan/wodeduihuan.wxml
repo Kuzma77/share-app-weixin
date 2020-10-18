@@ -6,7 +6,8 @@
 <image src="{{share.cover}}"></image>
 <view class="item-main" data-item="{{share}}" bindtap="goDetail">
 <text class="item-title">{{share.title}}</text>
-<text class="item-summary">{{share.title}}</text>
+<wxs src="../../utils/sub.wxs" module="tools" />
+<text class="item-summary">{{tools.sub(share.summary)}}</text>
 </view>
 <view class="item-duihuan">
 <text data-item="{{share}}" bindtap="duihuan">下载</text>

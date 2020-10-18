@@ -13,7 +13,15 @@
   width: 95%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  align-content: center;
   padding: 15rpx;
   font-size: 34rpx;
   height: 80rpx;
+}
+
+image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
 }

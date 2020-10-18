@@ -27,6 +27,7 @@ Page({
       this.setData({
         share: JSON.parse(options.share)
       })
+      console.log(this.data.share)
     }
   },
 
@@ -55,7 +56,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -176,7 +177,6 @@ Page({
         wx.showToast({
           title: '投稿成功',
           success:res =>{
-            that.clearInput()
             wx.reLaunch({
               url: '../index/index',
             })
@@ -195,6 +195,38 @@ Page({
    * 更新投稿
    */
   updateContribution(){
-
+    var that = this
+    const cover = '../../image/'+ Math.floor(Math.random()*4+1)+'.jpg'
+    API.updateContribution({
+      shareId:that.data.share.id, 
+      userId:app.globalData.user.id,
+      title: that.data.share.title,
+      isOriginal: that.data.share.isOriginal==1,
+      author:that.data.share.author,
+      cover:cover,
+      summary:that.data.share.summary,
+      price:that.data.share.price,
+      downloadUrl:that.data.share.downloadUrl,
+      reason:''
+    }).then(res =>{
+      console.log(res)
+      const data = JSON.parse(res)
+      if(data.succ){
+        wx.showToast({
+          title: '投稿成功',
+          success:res =>{
+            wx.reLaunch({
+              url: '../index/index',
+            })
+          }
+        })
+      }else{
+        wx.showToast({
+          title: '投稿异常',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    })
   }
 })

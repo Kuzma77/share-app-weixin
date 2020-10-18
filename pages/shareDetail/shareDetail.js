@@ -86,7 +86,7 @@ Page({
         API.update({
           id:app.globalData.user.id
         }).then(res =>{
-          if(data.succ){
+          if(res.succ){
             app.globalData.user = res.data
             console.log(app.globalData.user)
           }

@@ -47,9 +47,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      userInfo:app.globalData.user
-    })
+    app.globalData.user!=null?this.updateUserInfo(): false
   },
 
   /**
@@ -141,6 +139,19 @@ Page({
     app.globalData.token = null
     this.setData({
       userInfo:null
+    })
+  },
+  updateUserInfo(){
+    API.update({
+      id:app.globalData.user.id
+    }).then(res =>{
+      if(res.succ){
+        app.globalData.user = res.data
+        this.setData({
+          userInfo:app.globalData.user
+        })
+        console.log(app.globalData.user)
+      }
     })
   }
 })

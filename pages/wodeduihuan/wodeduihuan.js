@@ -9,7 +9,7 @@ Page({
   data: {
     shareList: null,
     pageNo: 1,
-    pageSize:5,
+    pageSize:10,
     more:true
   },
 

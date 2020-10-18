@@ -136,6 +136,7 @@ Page({
       })
     }
      API.getShares({
+      title:that.data.title,
       pageNo:that.data.pageNo,
       pageSize:that.data.pageSize
     }).then(res =>{
@@ -183,6 +184,7 @@ Page({
     this.setData({
       title: e.detail.value
     })
+    this.getShares(true)
   }
 
  

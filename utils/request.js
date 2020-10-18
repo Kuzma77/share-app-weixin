@@ -93,5 +93,9 @@ module.exports ={
   contribution:(data) =>{
     console.log("投稿")
     return post("/share/contribute",data)//投稿
+  },
+  updateContribution:(data) =>{
+    console.log("编辑投稿")
+    return post("/share/update/contribute",data) //编辑投稿
   }
 }
